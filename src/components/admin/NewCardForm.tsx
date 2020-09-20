@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from 'react';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
-import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import ErrorSnackbar from '../ErrorSnackbar';
 import firebase from 'firebase/app';
-import Snackbar from '@material-ui/core/Snackbar';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
@@ -39,24 +38,8 @@ function NewCardForm() {
           </CardActions>
         </form>
       </Card>
-      <DBErrorSnackbar show={showError} onClose={handleErrorClose} />
+      <ErrorSnackbar show={showError} onClose={handleErrorClose} />
     </>
-  );
-}
-
-interface DBErrorSnackbarProps {
-  show: boolean,
-  onClose: () => void
-}
-
-function DBErrorSnackbar(props: DBErrorSnackbarProps) {
-  return (
-    <Snackbar open={props.show} autoHideDuration={5000} onClose={props.onClose}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-      <Alert onClose={props.onClose} severity="error" elevation={6} variant="filled">
-        Something went wrong. Try again later?
-      </Alert>
-    </Snackbar>
   );
 }
 

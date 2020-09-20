@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import AdminCard from '../components/admin/Card';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
+import CardList from '../components/CardList';
 import firebase from 'firebase/app';
 import NewCardForm from '../components/admin/NewCardForm';
 import red from '@material-ui/core/colors/red';
@@ -70,6 +72,7 @@ function PageInternals() {
       </AppBar>
       <main>
         <NewCardForm />
+        <CardList component={AdminCard} />
       </main>
     </ThemeProvider>
   );

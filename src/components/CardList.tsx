@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 
 export interface CardType {
   content: string;
+  index: number;
 }
 
 type CardContents = { message: string };
@@ -14,7 +15,7 @@ interface Props {
 function CardList(props: Props) {
   const Tag: React.ElementType = props.component;
   const [cards, setCards] = useState([] as CardContents[]);
-  const cardElements = cards.map((value, idx) => <Tag key={idx} content={value.message} />);
+  const cardElements = cards.map((value, idx) => <Tag key={idx} index={idx} content={value.message} />);
   
   useEffect(() => {
     const dbRef = firebase.database().ref('posts');
@@ -27,9 +28,9 @@ function CardList(props: Props) {
   }, []);
 
   return (
-    <section>
+    <>
       {cardElements}
-    </section>
+    </>
   );
 }
 
