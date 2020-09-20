@@ -17,7 +17,7 @@ function NewCardForm() {
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     addPost(content)
-      .then(result => { if (result) setContent(''); else setShowError(true); })
+      .then(() => setContent(''))
       .catch(() => setShowError(true));
   };
   const handleErrorClose = () => setShowError(false);
@@ -65,12 +65,7 @@ async function addPost(content: string) {
   const snapshot = await postsRef.once('value');
   const posts: object[] = snapshot.val();
   posts.push({ message: content });
-  try {
-    await postsRef.set(posts);
-    return true;
-  } catch {
-    return false;
-  }
+  await postsRef.set(posts);  // potential error bubbles up
 }
 
 export default NewCardForm;
