@@ -1,12 +1,23 @@
 body {
+  background-color: #f5f5f5;
   margin: 0;
 }
 
 main {
-  margin: 0 1em;
+  margin: 2em 1em;
 }
 
 /* this should probably be css-in-js but i'm already learning ts and mui */
 header h6 {
   flex-grow: 1;
+}
+
+h2.MuiTypography-h5 {
+  align-items: center;
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+h2.MuiTypography-h5 svg {
+  margin-right: 0.2em;
 }

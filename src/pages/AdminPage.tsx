@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import firebase from 'firebase/app';
 import { Link } from 'react-router-dom';
-// import NewCardForm from '../components/admin/NewCardForm';
+import NewCardForm from '../components/admin/NewCardForm';
 import red from '@material-ui/core/colors/red';
 import {
   createMuiTheme,
@@ -65,8 +65,7 @@ function PageInternals() {
         </Toolbar>
       </AppBar>
       <main>
-        <h1>beep boop admin time.</h1>
-        {/* <NewCardForm /> */}
+        <NewCardForm />
       </main>
     </ThemeProvider>
   );
