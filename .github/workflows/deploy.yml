@@ -13,6 +13,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+    - run: npm install -g yarn
     - name: Cache node modules
       uses: actions/cache@v2
       env:
@@ -24,8 +25,8 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-    - run: npm ci
-    - run: npm run build
+    - run: yarn install --frozen-lockfile
+    - run: yarn run build
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
