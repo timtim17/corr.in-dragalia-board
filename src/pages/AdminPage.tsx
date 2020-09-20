@@ -39,7 +39,7 @@ function AdminPage() {
       unsubAuth();
       dbRef.off('value');
     };
-  }, []);
+  }, [firebaseAuth]);
   if (user) {
     if (admins) {
       if (admins.includes(user.uid)) {
