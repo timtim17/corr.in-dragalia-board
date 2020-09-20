@@ -26,7 +26,7 @@ h3 {
   font-weight: bold !important;
 }
 
-.user-card.MuiCard-root {
+.user-card.MuiCard-root:not(.animate-cards-enter-active):not(.animate-cards-exit-active) {
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 100ms ease !important;
 }
 
@@ -59,4 +59,23 @@ p {
   line-height: 1.5;
   letter-spacing: 0.00938em;
   margin: 0;
+}
+
+/* animations */
+.animate-cards-enter {
+  transform: translateX(-100vw);
+}
+
+.animate-cards-enter-active {
+  transform: translateX(0);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 500ms ease !important;
+}
+
+.animate-cards-exit {
+  transform: scale(1.0);
+}
+
+.animate-cards-exit-active {
+  transform: scale(0.0);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 200ms ease-in !important;
 }

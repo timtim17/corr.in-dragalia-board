@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export interface CardType {
   content: string;
@@ -35,11 +36,13 @@ function CardList(props: Props) {
     if (cards.length === 0) {
       return <p className="status-center">Nothing's here yet!</p>
     } else {
-      const cardElements = cards.map((value, idx) => <Tag key={idx} index={idx} title={value.title} content={value.message} />);
+      const cardElements = cards.map((value, idx) => <CSSTransition key={cards.length - idx - 1} timeout={{enter: 600, exit: 300}} classNames="animate-cards">
+          <Tag index={idx} title={value.title} content={value.message} />
+        </CSSTransition>);
       return (
-        <>
+        <TransitionGroup component={null}>
           {cardElements}
-        </>
+        </TransitionGroup>
       );
     }
   }
