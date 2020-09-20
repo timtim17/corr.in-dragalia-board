@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { CardType } from '../CardList';
 import ErrorSnackbar from '../ErrorSnackbar';
 import firebase from 'firebase/app';
+import ReactMarkdown from 'react-markdown';
 import TrashIcon from '@material-ui/icons/DeleteOutline'
 import Typography from '@material-ui/core/Typography';
 
@@ -18,7 +19,7 @@ function AdminCard(props: CardType) {
       <Card className="user-card">
         <CardContent>
           { props.title && <Typography variant="h6" component="h3">{props.title}</Typography> }
-          <Typography variant="body1">{props.content}</Typography>
+          <ReactMarkdown source={props.content} />
         </CardContent>
         <CardActions>
           <Button color="inherit" startIcon={<TrashIcon />}
