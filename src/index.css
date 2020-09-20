@@ -5,3 +5,8 @@ body {
 main {
   margin: 0 1em;
 }
+
+/* this should probably be css-in-js but i'm already learning ts and mui */
+header h6 {
+  flex-grow: 1;
+}
