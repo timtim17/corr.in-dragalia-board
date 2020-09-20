@@ -1,11 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import CardList from '../components/CardList';
 import {
   createMuiTheme,
   ThemeProvider
 } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import UserCard from '../components/user/Card';
 
 const theme = createMuiTheme({
   palette: {
@@ -26,7 +28,7 @@ function MainPage() {
         </Toolbar>
       </AppBar>
       <main>
-        <h1>hello world.</h1>
+        <CardList component={UserCard} />
       </main>
     </ThemeProvider>
   );

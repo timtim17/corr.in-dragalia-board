@@ -64,7 +64,7 @@ async function addPost(content: string) {
   const postsRef = firebase.database().ref('posts');
   const snapshot = await postsRef.once('value');
   const posts: object[] = snapshot.val();
-  posts.push({ message: content });
+  posts.unshift({ message: content });
   await postsRef.set(posts);  // potential error bubbles up
 }
 

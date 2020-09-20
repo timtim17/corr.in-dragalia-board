@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import firebase from 'firebase/app';
-import { Link } from 'react-router-dom';
 import NewCardForm from '../components/admin/NewCardForm';
 import red from '@material-ui/core/colors/red';
 import {
@@ -29,10 +28,15 @@ function AdminPage() {
   const [user, setUser] = useState(firebaseAuth.currentUser);
   const [admins, setAdmins] = useState([] as string[]);
   useEffect(() => {
-    firebaseAuth.onAuthStateChanged(setUser);
-    firebase.database().ref('admins').on('value', snapshot => {
+    const unsubAuth = firebaseAuth.onAuthStateChanged(setUser);
+    const dbRef = firebase.database().ref('admins');
+    dbRef.on('value', snapshot => {
       setAdmins(snapshot.val());
     });
+    return function cleanUp() {
+      unsubAuth();
+      dbRef.off('value');
+    };
   }, []);
   if (user) {
     if (admins) {

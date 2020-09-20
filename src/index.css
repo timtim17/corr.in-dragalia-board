@@ -21,3 +21,15 @@ h2.MuiTypography-h5 {
 h2.MuiTypography-h5 svg {
   margin-right: 0.2em;
 }
+
+.user-card.MuiCard-root {
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 100ms ease !important;
+}
+
+.MuiCard-root + .MuiCard-root {
+  margin-top: 1em;
+}
+
+.user-card.MuiCard-root:hover {
+  transform: scale(1.01);
+}
