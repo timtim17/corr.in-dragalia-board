@@ -8,6 +8,7 @@ function UserCard(props: CardType) {
   return (
     <Card className="user-card">
       <CardContent>
+        { props.title && <Typography variant="h6" component="h3">{props.title}</Typography> }
         <Typography variant="body1">{props.content}</Typography>
       </CardContent>
     </Card>
